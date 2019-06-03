@@ -1,0 +1,50 @@
+Random Shuffler is an actual random number shuffler, 
+not a random number generator than tend to use math
+shortcuts and are very prone to duplicates.
+
+If you would like to run the program in the Samples directory click on the Install Folder and run the Setup.exe
+
+The program is very simple, all it does is initialize up to the number you select, the default is 10,000 per run
+as it is quite a bit slower than a random number generator.
+
+There is an Excel spreadsheed in the Excel folder of the Samples\PickADoorGame.
+
+Here is the summary of what happens in the source code for this game:
+
+A series of simulations are created and ahead of time a car is randomly hidden in one of 3 doors;
+
+In the first set the 'Do Not Swap' set; the contestant on the game show picks one of 3 random doors.
+
+The video that causes me to waste an entire day to prove this is listed here:
+https://www.youtube.com/watch?v=mhlc7peGlGg
+
+And there are others, just search for them; people are very gullable when someone makes a video 
+that is why advertising works so well.
+
+I wish I had never watched the video, but I read the same thing in a book and that was wrong also so I want
+to prove this once and for all.
+
+The host Monte Hall reveals one door; this appears to be the part that confuses all the people
+that think this matters. It is still a 33.33% of chance of picking any door. You just happen to now 
+know one of the 33.33% chances that is not correct.
+
+The total of a sample 10,000 run:
+Do Not Swap:
+Correct Guess (Wins Car)  : 3,391
+Wrong Guesses: (Wins Goat): 6,609
+
+Always Swap:
+Correct Guess (Wins Car)  : 3,357
+Wrong Guesses: (Wins Goat): 6,643
+
+Swapping to unknown 33.33% items, does not change the results.
+
+I spent 20 hours on this and I have a book to finish writing and my day job i wasted today, data does not lie.
+
+I also now have an open source project called RandomShuffler, so it was not a total waste, I will make an extra
+eighteen cents per month now.
+https://randomshuffler.codeplex.com (Will be live this weekend, I am going to bed as it is 2 AM now and I watched that
+stupid video at 9 AM.
+
+
+

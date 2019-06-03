@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FFD06E2C-BD92-4FD7-91C8-662BDFD98516}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CardCounter</RootNamespace>
+    <AssemblyName>CardCounter</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataJuggler.Core.RandomShuffler, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DataJuggler.Core.RandomShuffler.1.2.1\lib\net461\DataJuggler.Core.RandomShuffler.dll</HintPath>
+    </Reference>
+    <Reference Include="DataJuggler.Core.UltimateHelper, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DataJuggler.Core.UltimateHelper.1.3.0\lib\net461\DataJuggler.Core.UltimateHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DataJuggler.Win.Controls, Version=5.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DataJuggler.Win.Controls.5.4.1\lib\net461\DataJuggler.Win.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\PlayHandResponseRequest.cs" />
+    <Compile Include="Actions\TakeInsuranceResponseRequest.cs" />
+    <Compile Include="Actions\PlayerResponse.cs" />
+    <Compile Include="CountControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CountControl.Designer.cs">
+      <DependentUpon>CountControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delegates\RegisteredEvents.cs" />
+    <Compile Include="Enumerations\CardCounterEnumerations.cs" />
+    <Compile Include="Factory\ChipFactory.cs" />
+    <Compile Include="Factory\PlayerResponseFactory.cs" />
+    <Compile Include="Interfaces\ICardCountingSystem.cs" />
+    <Compile Include="Interfaces\IComputerPlayer.cs" />
+    <Compile Include="Interfaces\IPlayerResponseRequest.cs" />
+    <Compile Include="Objects\AllowedResponses.cs" />
+    <Compile Include="Objects\ButtonDescriptor.cs" />
+    <Compile Include="Objects\Hand.cs" />
+    <Compile Include="Objects\CountingSystemView.cs" />
+    <Compile Include="Objects\GameManager.cs" />
+    <Compile Include="Objects\ImageEx.cs" />
+    <Compile Include="Objects\Inning.cs" />
+    <Compile Include="Objects\Options.cs" />
+    <Compile Include="Objects\Player.cs" />
+    <Compile Include="Actions\PlaceBetResponseRequest.cs" />
+    <Compile Include="Actions\PlayerResponseRequestBaseClass.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecureUserData.cs" />
+    <Compile Include="Security\SecureUserDataFactory.cs" />
+    <Compile Include="Systems\BlackJackCardValueBase.cs" />
+    <Compile Include="Systems\CardCountingSystemBase.cs" />
+    <Compile Include="Factory\CardCountingSystemFactory.cs" />
+    <Compile Include="Systems\BasicStrategySystem.cs" />
+    <Compile Include="Systems\KnockOutSystem.cs" />
+    <Compile Include="Systems\HighOptIISystem.cs" />
+    <Compile Include="Systems\HighOptISystem.cs" />
+    <Compile Include="Systems\WongHalvesSystem.cs" />
+    <Compile Include="Systems\KISSIIISystem.cs" />
+    <Compile Include="Systems\KISSIISystem.cs" />
+    <Compile Include="Systems\HighLowSystem.cs" />
+    <Compile Include="UI\Controls\BlackJackPlayerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\BlackJackPlayerControl.Designer.cs">
+      <DependentUpon>BlackJackPlayerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\CardCounterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\CardCounterControl.Designer.cs">
+      <DependentUpon>CardCounterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\DealerCardContainerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\DealerCardContainerControl.Designer.cs">
+      <DependentUpon>DealerCardContainerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\CardContainerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\CardContainerControl.Designer.cs">
+      <DependentUpon>CardContainerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\ChipsHostControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ChipsHostControl.Designer.cs">
+      <DependentUpon>ChipsHostControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\ChipSelectorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ChipSelectorControl.Designer.cs">
+      <DependentUpon>ChipSelectorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\CountingSystemViewerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\CountingSystemViewerControl.Designer.cs">
+      <DependentUpon>CountingSystemViewerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\OptionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\OptionsControl.Designer.cs">
+      <DependentUpon>OptionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\PayOffBetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\PayOffBetControl.Designer.cs">
+      <DependentUpon>PayOffBetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\PlayerEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\PlayerEditorControl.Designer.cs">
+      <DependentUpon>PlayerEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\PlayerResponseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\PlayerResponseControl.Designer.cs">
+      <DependentUpon>PlayerResponseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\SelectPlayersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\SelectPlayersControl.Designer.cs">
+      <DependentUpon>SelectPlayersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\ShufflingAnimationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ShufflingAnimationControl.Designer.cs">
+      <DependentUpon>ShufflingAnimationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\TableOptionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\TableOptionsControl.Designer.cs">
+      <DependentUpon>TableOptionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\ChipSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\ChipSelectorForm.Designer.cs">
+      <DependentUpon>ChipSelectorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Forms\OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ChipSelectorHelper.cs" />
+    <Compile Include="Factory\CountingSystemViewFactory.cs" />
+    <Compile Include="Util\DelayManager.cs" />
+    <EmbeddedResource Include="CountControl.resx">
+      <DependentUpon>CountControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\BlackJackPlayerControl.resx">
+      <DependentUpon>BlackJackPlayerControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\CardCounterControl.resx">
+      <DependentUpon>CardCounterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\DealerCardContainerControl.resx">
+      <DependentUpon>DealerCardContainerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\CardContainerControl.resx">
+      <DependentUpon>CardContainerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\ChipsHostControl.resx">
+      <DependentUpon>ChipsHostControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\ChipSelectorControl.resx">
+      <DependentUpon>ChipSelectorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\CountingSystemViewerControl.resx">
+      <DependentUpon>CountingSystemViewerControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\OptionsControl.resx">
+      <DependentUpon>OptionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\PayOffBetControl.resx">
+      <DependentUpon>PayOffBetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\PlayerEditorControl.resx">
+      <DependentUpon>PlayerEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\PlayerResponseControl.resx">
+      <DependentUpon>PlayerResponseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\SelectPlayersControl.resx">
+      <DependentUpon>SelectPlayersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\ShufflingAnimationControl.resx">
+      <DependentUpon>ShufflingAnimationControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\TableOptionsControl.resx">
+      <DependentUpon>TableOptionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\ChipSelectorForm.resx">
+      <DependentUpon>ChipSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Win\RandomBanner\RandomBanner\RandomBanner.csproj">
+      <Project>{7F218671-E087-4EE1-8707-114333A98258}</Project>
+      <Name>RandomBanner</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DarkBlueButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HorizontalBlackBox.png" />
+    <None Include="Resources\DarkButton.png" />
+    <None Include="Resources\VerticalBlackBox.png" />
+    <None Include="Resources\BlueBoxDark.png" />
+    <None Include="Resources\BlueBoxCool.png" />
+    <None Include="Resources\OrangeBox.png" />
+    <None Include="Resources\BlueBox.png" />
+    <None Include="Resources\BlackBoxLight.png" />
+    <None Include="Resources\BlackBox.png" />
+    <None Include="Resources\DeepBlue.png" />
+    <None Include="Resources\HelpSmall.png" />
+    <None Include="Resources\Tip.png" />
+    <None Include="Images\Chips\WhiteChip.png" />
+    <None Include="Images\Chips\RedChip.png" />
+    <None Include="Images\Chips\GreenChip.png" />
+    <None Include="Images\Chips\Black Chip.png" />
+    <None Include="Images\Chips\PurpleChip.png" />
+    <None Include="Images\Chips\GoldChip.png" />
+    <None Include="Images\Chips\Chip Rack.png" />
+    <None Include="Images\DeepGray.png" />
+    <None Include="Images\Navigation\FirstButton.png" />
+    <None Include="Images\Navigation\BackButton.png" />
+    <None Include="Images\Navigation\NextButton.png" />
+    <None Include="Images\Navigation\LastButton.png" />
+    <None Include="Images\BlackBoxWithFrame.png" />
+    <None Include="Images\Shuffling\YellowBox.png" />
+    <None Include="Images\Shuffling\S.png" />
+    <None Include="Images\Shuffling\Sh.png" />
+    <None Include="Images\Shuffling\Shu.png" />
+    <None Include="Images\Shuffling\Shuf.png" />
+    <None Include="Images\Shuffling\Shuff.png" />
+    <None Include="Images\Shuffling\Shuffl.png" />
+    <None Include="Images\Shuffling\Shuffli.png" />
+    <None Include="Images\Shuffling\Shufflin.png" />
+    <None Include="Images\Shuffling\Shuffling.png" />
+    <None Include="Images\DarkButton.png" />
+    <None Include="Images\Chips\BlackChipNoPlus.png" />
+    <None Include="Images\Chips\GoldNoPlus.png" />
+    <None Include="Images\Chips\RedChipNoPlus.png" />
+    <None Include="Images\Chips\WhiteChipNoPlus.png" />
+    <None Include="Images\Chips\GreenChipNoPlus.png" />
+    <None Include="Images\Chips\PurpleChipNoPlus.png" />
+    <None Include="Images\Navigation\Stop.png" />
+    <None Include="Images\Navigation\Pause.png" />
+    <None Include="Images\Navigation\Play.png" />
+    <None Include="Images\Navigation\FirstButtonGray.png" />
+    <None Include="Images\Navigation\BackButtonGray.png" />
+    <None Include="Images\Navigation\PlayGray.png" />
+    <None Include="Images\Navigation\PauseGray.png" />
+    <None Include="Images\Navigation\NextButtonGray.png" />
+    <None Include="Images\Navigation\LastButtonGray.png" />
+    <None Include="Images\Cards\AceClubs.png" />
+    <None Include="Images\Cards\AceDiamonds.png" />
+    <None Include="Images\Cards\AceHearts.png" />
+    <None Include="Images\Cards\AceSpades.png" />
+    <None Include="Images\Cards\BackBlue.png" />
+    <None Include="Images\Cards\EightClubs.png" />
+    <None Include="Images\Cards\EightDiamonds.png" />
+    <None Include="Images\Cards\EightHearts.png" />
+    <None Include="Images\Cards\EightSpades.png" />
+    <None Include="Images\Cards\FiveClubs.png" />
+    <None Include="Images\Cards\FiveDiamonds.png" />
+    <None Include="Images\Cards\FiveHearts.png" />
+    <None Include="Images\Cards\FiveSpades.png" />
+    <None Include="Images\Cards\FourClubs.png" />
+    <None Include="Images\Cards\FourDiamonds.png" />
+    <None Include="Images\Cards\FourHearts.png" />
+    <None Include="Images\Cards\FourSpades.png" />
+    <None Include="Images\Cards\JackClubs.png" />
+    <None Include="Images\Cards\JackDiamonds.png" />
+    <None Include="Images\Cards\JackHearts.png" />
+    <None Include="Images\Cards\JackSpades.png" />
+    <None Include="Images\Cards\KingClubs.png" />
+    <None Include="Images\Cards\KingDiamonds.png" />
+    <None Include="Images\Cards\KingHearts.png" />
+    <None Include="Images\Cards\KingSpades.png" />
+    <None Include="Images\Cards\NineClubs.png" />
+    <None Include="Images\Cards\NineDiamonds.png" />
+    <None Include="Images\Cards\NineHearts.png" />
+    <None Include="Images\Cards\NineSpades.png" />
+    <None Include="Images\Cards\QueenClubs.png" />
+    <None Include="Images\Cards\QueenDiamonds.png" />
+    <None Include="Images\Cards\QueenHearts.png" />
+    <None Include="Images\Cards\QueenSpades.png" />
+    <None Include="Images\Cards\SevenClubs.png" />
+    <None Include="Images\Cards\SevenDiamonds.png" />
+    <None Include="Images\Cards\SevenHearts.png" />
+    <None Include="Images\Cards\SevenSpades.png" />
+    <None Include="Images\Cards\SixClubs.png" />
+    <None Include="Images\Cards\SixDiamonds.png" />
+    <None Include="Images\Cards\SixHearts.png" />
+    <None Include="Images\Cards\SixSpades.png" />
+    <None Include="Images\Cards\TenClubs.png" />
+    <None Include="Images\Cards\TenDiamonds.png" />
+    <None Include="Images\Cards\TenHearts.png" />
+    <None Include="Images\Cards\TenSpades.png" />
+    <None Include="Images\Cards\ThreeClubs.png" />
+    <None Include="Images\Cards\ThreeDiamonds.png" />
+    <None Include="Images\Cards\ThreeHearts.png" />
+    <None Include="Images\Cards\ThreeSpades.png" />
+    <None Include="Images\Cards\TwoClubs.png" />
+    <None Include="Images\Cards\TwoDiamonds.png" />
+    <None Include="Images\Cards\TwoHearts.png" />
+    <None Include="Images\Cards\TwoSpades.png" />
+    <None Include="Images\Computer.png" />
+    <None Include="Images\InusranceIcon.png" />
+    <None Include="Images\DoubleDown.png" />
+    <None Include="Images\MidnightBlueGradient.png" />
+    <None Include="Images\MidnightBlueGradientWithBorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Black Jack Table.jpg" />
+    <Content Include="lib\DataJuggler.Win.Controls Read Me.txt" />
+    <Content Include="RAD Studio Icon.ico" />
+    <Content Include="Tools.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
