@@ -126,7 +126,7 @@ namespace DataJuggler.Core.RandomShuffler
             /// </summary>
             public int InitializationShuffles
             {
-                get { return initializationShuffles; }
+                get {return initializationShuffles; }
                 set { initializationShuffles = value; }
             }
             #endregion

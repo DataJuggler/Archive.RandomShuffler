@@ -306,7 +306,7 @@ namespace DataJuggler.Core.RandomShuffler
             /// This method Initialize Integers
             /// </summary>
             private void InitializeIntegers()
-            {
+           {
                 // iterate the values up to the sets to initialize
                 for (int a = 0; a < this.SetsToInitialize; a++)
                 {
@@ -779,7 +779,7 @@ namespace DataJuggler.Core.RandomShuffler
             /// </summary>
             public ShuffleOptionManager ShuffleOptions
             {
-                get { return shuffleOptions; }
+                get{ return shuffleOptions; }
                 set { shuffleOptions = value; }
             }
             #endregion

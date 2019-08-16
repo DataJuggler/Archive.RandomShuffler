@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/DataJuggler/RandomDataGenerator/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/DataJuggler/RandomDataGenerator</projectUrl>
+    <iconUrl>https://github.com/DataJuggler/SharedRepo/blob/master/Shared/Images/DataJuggler.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Verion 1.2.3: I made some changes for handling numbers over 256 with the default Shuffler.
+    It has been so long since I worked on this project, I forgot there is also a LargeNumberShuffler.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Random Number Generation Generatiors Seed True Distribution Card Game Dice Game</tags>
+    <dependencies>
+      <dependency id="DataJuggler.Core.UltimateHelper" version="1.3.4" include="contentFiles, build" />
+    </dependencies>
+  </metadata>
+</package>
