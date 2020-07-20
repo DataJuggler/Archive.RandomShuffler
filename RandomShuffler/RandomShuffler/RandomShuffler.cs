@@ -9,14 +9,13 @@ using System.Collections.Generic;
 using DataJuggler.Core.RandomShuffler.Objects;
 using DataJuggler.Core.RandomShuffler.Enumerations;
 using DataJuggler.Core.RandomShuffler.Interfaces;
-using DataJuggler.Core.RandomShuffler.Reports;
 
 #endregion
 
 namespace DataJuggler.Core.RandomShuffler
 {
 
-    #region class RandomShuffler
+    #region class RandomShuffler : IDisposable
     ///<summary>
     /// This class is used to create large sets of random numbers for RandomMode of Integers, Cards and someday Dice.
     /// 
@@ -32,7 +31,7 @@ namespace DataJuggler.Core.RandomShuffler
     /// For Integers you must set the MinValue and MaxValue and the SetsToFill property, see the Sample project ThreeDoorsGame
     /// located in the 'Samples' folder for a working example.
     ///</summary>
-    public class RandomShuffler
+    public class RandomShuffler : IDisposable
     {
 
         #region Private Variables
@@ -49,7 +48,6 @@ namespace DataJuggler.Core.RandomShuffler
         private const int CardMinValue = 1;
         private const int CardMaxValue = 52;
         private ICardValueManager cardValueManager;
-        private RandomReport report;
         private int randomStorageCount;
         private const int NumberSuitsInDeck = 4;
         #endregion
@@ -143,6 +141,20 @@ namespace DataJuggler.Core.RandomShuffler
 
                 // return value
                 return canPullNextItem;
+            }
+            #endregion
+
+            #region Dispose()
+            /// <summary>
+            /// method Dispose
+            /// </summary>
+            public void Dispose()
+            {
+                // destroy the lists and objects that might be created
+                randomIntStorage = null;
+                randomCardStorage = null;
+                cardValueManager = null;
+                shuffleOptions = null;
             }
             #endregion
 
@@ -323,36 +335,6 @@ namespace DataJuggler.Core.RandomShuffler
             }
             #endregion
 
-            #region LogReport(Card nextCard)
-            /// <summary>
-            /// This method returns the Report
-            /// </summary>
-            private void LogReport(Card nextCard)
-            {
-                // If the nextCard object exists
-                if ((NullHelper.Exists(nextCard)) && (this.HasReport))
-                {
-                    // log the occurrence
-                    this.Report.LogOccurrence(((int) nextCard.Suit * 13) + nextCard.CardValue);
-                }
-            }
-            #endregion
-            
-            #region LogReport(int nextItem)
-            /// <summary>
-            /// This method Log Report
-            /// </summary>
-            private void LogReport(int nextItem)
-            {
-                // If the Report object exists
-                if ((this.HasReport) && (nextItem > 0))
-                {
-                    // Log the report
-                    this.Report.LogOccurrence(nextItem);
-                }
-            }
-            #endregion
-
             #region PullNextCard(bool remove = true, bool ignoreShuffle = false, bool ignoreException = false
             /// <summary>
             /// This method returns the Next Card from the top of the 'Deck'.
@@ -476,9 +458,6 @@ namespace DataJuggler.Core.RandomShuffler
                         // Reshuffle
                         Shuffle();
                     }
-
-                    // Log the report
-                    LogReport(nextItem);
 
                     // if ignreShuffle is false and the ShuffleOptions exist and have one or more shuffles required                    
                     if ((!ignoreShuffle) && (this.HasShuffleOptions) && (this.ShuffleOptions.HasAfterItemIsPulledShuffles))
@@ -615,23 +594,6 @@ namespace DataJuggler.Core.RandomShuffler
             }
             #endregion
             
-            #region HasReport
-            /// <summary>
-            /// This property returns true if this object has a 'Report'.
-            /// </summary>
-            public bool HasReport
-            {
-                get
-                {
-                    // initial value
-                    bool hasReport = (this.Report != null);
-                    
-                    // return value
-                    return hasReport;
-                }
-            }
-            #endregion
-            
             #region HasShuffleOptions
             /// <summary>
             /// This property returns true if this object has a 'ShuffleOptions'.
@@ -726,17 +688,6 @@ namespace DataJuggler.Core.RandomShuffler
                     // return the number of cards in a deck
                     return CardMaxValue;
                 }
-            }
-            #endregion
-            
-            #region Report
-            /// <summary>
-            /// This property gets or sets the value for 'Report'.
-            /// </summary>
-            public RandomReport Report
-            {
-                get { return report; }
-                set { report = value; }
             }
             #endregion
             

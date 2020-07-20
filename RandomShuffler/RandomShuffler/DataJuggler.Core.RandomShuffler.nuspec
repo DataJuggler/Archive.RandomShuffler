@@ -10,8 +10,11 @@
     <projectUrl>https://github.com/DataJuggler/RandomDataGenerator</projectUrl>
     <iconUrl>https://github.com/DataJuggler/SharedRepo/blob/master/Shared/Images/DataJuggler.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Verion 1.2.3: I made some changes for handling numbers over 256 with the default Shuffler.
+    <description>$description$</description>    
+    <releaseNotes>
+      Version 1.2.6: I implemented IDisposable.
+      Version 1.2.4 and Version 1.2.5: These changes were applicable only to the .Net Core version, but I am trying to keep the versions in sync.
+      Verion 1.2.3: I made some changes for handling numbers over 256 with the default Shuffler.
     It has been so long since I worked on this project, I forgot there is also a LargeNumberShuffler.</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>Random Number Generation Generatiors Seed True Distribution Card Game Dice Game</tags>

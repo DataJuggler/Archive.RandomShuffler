@@ -37,8 +37,8 @@
     <AssemblyOriginatorKeyFile>RandomShuffler.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataJuggler.Core.UltimateHelper, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Tutorials\RandomDataGenerator\Code\RandomDataGenerator\packages\DataJuggler.Core.UltimateHelper.1.3.4\lib\net461\DataJuggler.Core.UltimateHelper.dll</HintPath>
+    <Reference Include="DataJuggler.Core.UltimateHelper, Version=1.3.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataJuggler.Core.UltimateHelper.1.3.9\lib\net461\DataJuggler.Core.UltimateHelper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,13 +55,10 @@
     <Compile Include="Objects\Card.cs" />
     <Compile Include="Objects\Shoe.cs" />
     <Compile Include="Objects\Deck.cs" />
-    <Compile Include="Reports\NumberOccurrence.cs" />
-    <Compile Include="Reports\RandomReport.cs" />
     <Compile Include="RandomShuffler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShuffleHelper.cs" />
     <Compile Include="ShuffleOptionManager.cs" />
-    <Compile Include="Reports\ShuffleReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerations\RandomShuffler.Enumerations.cs" />
